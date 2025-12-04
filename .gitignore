@@ -1,0 +1,32 @@
+# =========================
+# Node Modules & Build
+# =========================
+node_modules/
+dist/
+build/
+
+# =========================
+# Environment Files
+# =========================
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# =========================
+# OS / Editor Files
+# =========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
+
+# =========================
+# Misc / Temporary
+# =========================
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
