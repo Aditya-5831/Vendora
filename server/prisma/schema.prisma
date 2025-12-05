@@ -12,3 +12,54 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model User {
+  id        String    @id @default(cuid())
+  clerkId   String    @unique
+  email     String    @unique
+  name      String
+  imageUrl  String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  wishlist  Wishlist?
+  addresses Address[]
+
+  @@map("users")
+}
+
+model Wishlist {
+  id            String         @id @default(cuid())
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  user          User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId        String         @unique
+  wishlistItems WishlistItem[]
+
+  @@map("wishlists")
+}
+
+model WishlistItem {
+  id         String   @id @default(cuid())
+  createdAt  DateTime @default(now())
+  wishlist   Wishlist @relation(fields: [wishlistId], references: [id], onDelete: Cascade)
+  wishlistId String
+
+  @@map("wishlist_items")
+}
+
+model Address {
+  id          String   @id @default(cuid())
+  fullName    String
+  street      String
+  city        String
+  state       String
+  zipCode     String
+  phoneNumber String
+  isDefault   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String
+
+  @@map("addresses")
+}
