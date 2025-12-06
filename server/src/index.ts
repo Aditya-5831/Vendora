@@ -11,7 +11,7 @@ const app = express();
 // Middlewares
 app.use(express.json())
 app.use(clerkMiddleware())
-app.get("/api/inngest", serve({ client: inngest, functions }))
+app.use("/api/inngest", serve({ client: inngest, functions }))
 
 
 // Routes
