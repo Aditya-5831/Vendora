@@ -26,9 +26,6 @@ importers:
       express:
         specifier: ^5.2.1
         version: 5.2.1
-      inngest:
-        specifier: ^3.46.0
-        version: 3.46.0(@opentelemetry/core@2.2.0(@opentelemetry/api@1.9.0))(express@5.2.1)(hono@4.10.6)(typescript@5.9.3)(zod@4.1.13)
       pg:
         specifier: ^8.16.3
         version: 8.16.3
@@ -42,6 +39,9 @@ importers:
       '@types/pg':
         specifier: ^8.15.6
         version: 8.15.6
+      inngest:
+        specifier: ^3.46.0
+        version: 3.46.0(@opentelemetry/core@2.2.0(@opentelemetry/api@1.9.0))(express@5.2.1)(hono@4.10.6)(typescript@5.9.3)(zod@4.1.13)
       prisma:
         specifier: ^7.1.0
         version: 7.1.0(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3)
