@@ -1,10 +1,10 @@
 import { Inngest } from 'inngest'
 import { db } from './db.js'
-import { ENV } from './env.js'
+
+
 
 export const inngest = new Inngest({
     id: "vendora",
-    eventKey: ENV.INNGEST_EVENT_KEY
 })
 
 const syncUser = inngest.createFunction(
@@ -12,11 +12,13 @@ const syncUser = inngest.createFunction(
         id: "sync-user"
     },
     {
-        event: "clerk/user.created"
+        event: "webhook-integration/user.created"
     },
     async ({ event }) => {
+        console.log("Hello")
         const { id, email_addresses, first_name, last_name, image_url } = event.data
         console.log("event", event)
+
 
         const user = await db.user.create({
             data: {
@@ -36,10 +38,11 @@ const deleteUser = inngest.createFunction(
         id: "delete_user"
     },
     {
-        event: "clerk/user.deleted"
+        event: "webhook-integration/user.deleted"
     },
 
     async ({ event }) => {
+        console.log("Hello")
         const { id } = event.data;
         await db.user.delete({
             where: {
