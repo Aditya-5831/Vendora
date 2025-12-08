@@ -14,8 +14,9 @@ const syncUser = inngest.createFunction(
     },
     async ({ event }) => {
         const { id, email_addresses, first_name, last_name, image_url } = event.data
+        console.log("event", event)
 
-        await db.user.create({
+        const user = await db.user.create({
             data: {
                 clerkId: id,
                 email: email_addresses[0]?.email_address ?? "",
@@ -23,6 +24,8 @@ const syncUser = inngest.createFunction(
                 imageUrl: image_url
             }
         })
+
+        console.log("user: ", user)
     }
 )
 
