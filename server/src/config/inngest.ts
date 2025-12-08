@@ -1,8 +1,10 @@
 import { Inngest } from 'inngest'
 import { db } from './db.js'
+import { ENV } from './env.js'
 
 export const inngest = new Inngest({
-    id: "vendora"
+    id: "vendora",
+    eventKey: ENV.INNGEST_EVENT_KEY
 })
 
 const syncUser = inngest.createFunction(
