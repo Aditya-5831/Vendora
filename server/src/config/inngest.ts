@@ -12,7 +12,7 @@ const syncUser = inngest.createFunction(
         id: "sync-user"
     },
     {
-        event: "clerk/user.created"
+        event: "webhook-integration/user.created"
     },
     async ({ event }) => {
         console.log("Hello")
@@ -25,7 +25,7 @@ const syncUser = inngest.createFunction(
                 clerkId: id,
                 email: email_addresses[0]?.email_address ?? "",
                 name: `${first_name} ${last_name}`.trim() || "User",
-                imageUrl: image_url
+                imageUrl: image_url,
             }
         })
 
@@ -38,7 +38,7 @@ const deleteUser = inngest.createFunction(
         id: "delete_user"
     },
     {
-        event: "clerk/user.deleted"
+        event: "webhook-integration/user.deleted"
     },
 
     async ({ event }) => {
