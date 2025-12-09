@@ -12,7 +12,7 @@ const syncUser = inngest.createFunction(
         id: "sync-user"
     },
     {
-        event: "webhook-integration/user.created"
+        event: "clerk/user.created"
     },
     async ({ event }) => {
         console.log("Hello")
@@ -38,11 +38,11 @@ const deleteUser = inngest.createFunction(
         id: "delete_user"
     },
     {
-        event: "webhook-integration/user.deleted"
+        event: "clerk/user.deleted"
     },
 
     async ({ event }) => {
-        console.log("Hello")
+        console.log("Hello", event)
         const { id } = event.data;
         await db.user.delete({
             where: {
