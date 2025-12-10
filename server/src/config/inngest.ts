@@ -2,7 +2,6 @@ import { Inngest } from 'inngest'
 import { db } from './db.js'
 
 
-
 export const inngest = new Inngest({
     id: "vendora",
 })
@@ -15,9 +14,7 @@ const syncUser = inngest.createFunction(
         event: "webhook-integration/user.created"
     },
     async ({ event }) => {
-        console.log("Hello")
         const { id, email_addresses, first_name, last_name, image_url } = event.data
-        console.log("event", event)
 
 
         const user = await db.user.create({
