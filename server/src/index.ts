@@ -6,6 +6,7 @@ import { clerkMiddleware } from '@clerk/express';
 import { serve } from 'inngest/express';
 import { functions, inngest } from './config/inngest.js';
 import adminRoutes from './modules/admin/admin.routes.js'
+import userRoutes from './modules/user/user.routes.js'
 import { errorHandler } from "./middlewares/error.middleware.js";
 
 
@@ -23,6 +24,7 @@ app.use("/api/inngest", serve({ client: inngest, functions }))
 
 // Routes
 app.use("/api/admin", adminRoutes)
+app.use("/api/user", userRoutes)
 
 
 // Error handler middleware

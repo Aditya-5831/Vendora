@@ -118,6 +118,7 @@ model CartItems {
 
 model Address {
   id          String   @id @default(cuid())
+  label       String
   fullName    String
   street      String
   city        String
