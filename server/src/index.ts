@@ -1,14 +1,15 @@
-import "dotenv/config"
+import "dotenv/config";
 
 import express from 'express';
 import { ENV } from './config/env.js';
 import { clerkMiddleware } from '@clerk/express';
 import { serve } from 'inngest/express';
 import { functions, inngest } from './config/inngest.js';
-import adminRoutes from './modules/admin/admin.routes.js'
-import userRoutes from './modules/user/user.routes.js'
-import orderRoutes from './modules/order/order.routes.js'
-import reviewRoutes from './modules/review/review.routes.js'
+import adminRoutes from './modules/admin/admin.routes.js';
+import userRoutes from './modules/user/user.routes.js';
+import orderRoutes from './modules/order/order.routes.js';
+import reviewRoutes from './modules/review/review.routes.js';
+import productRoutes from './modules/product/product.routes.js';
 import { errorHandler } from "./middlewares/error.middleware.js";
 
 
@@ -29,6 +30,7 @@ app.use("/api/admin", adminRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/order", orderRoutes);
 app.use("/api/review", reviewRoutes);
+app.use("/api/product", productRoutes);
 
 
 // Error handler middleware
